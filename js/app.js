@@ -40,6 +40,8 @@ function verifyPin() {
     const typedNumbers = document.getElementById('typed-numbers').value;
     const successNotification = document.getElementById('notify-success');
     const failNotification = document.getElementById('notify-fail');
+    const lifespan = document.getElementById('life').innerText;
+    console.log(lifespan);
     if (pin == typedNumbers) {
 
         successNotification.style.display = 'block';
@@ -48,6 +50,17 @@ function verifyPin() {
 
         failNotification.style.display = 'block';
         successNotification.style.display = 'none';
+        const l = parseInt(lifespan) - 1;
+        if (l > 0) {
+            document.getElementById('life').innerText = l;
+        } else {
+            document.getElementById('life').innerText = l;
+            document.getElementById('notify-life').style.display = 'block';
+            failNotification.style.display = 'none';
+            document.getElementById('button-id').disabled = true;
+            document.getElementById('button-id').style.backgroundColor = 'red';
+        }
+
 
     }
 
